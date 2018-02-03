@@ -21,7 +21,7 @@ createCommentTable prefix conn = void . execute_ conn . fromString $ concat
   , "  `created_at` int(10) unsigned NOT NULL,"
   , "  PRIMARY KEY (`id`),"
   , "  KEY `for` (`for`),"
-  , "  KEY `who` (`who`),"
+  , "  KEY `who` (`who`)"
   , ") ENGINE=InnoDB DEFAULT CHARSET=utf8"
   ]
 

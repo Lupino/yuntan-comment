@@ -33,19 +33,17 @@ data Comment = Comment
   , commentFor       :: Text
   , commentWho       :: Text
   , commentText      :: Text
-  , commentExtra     :: Value
   , commentCreatedAt :: Int64
   }
   deriving (Show)
 
 instance QueryResults Comment where
-  convertResults [fa, fb, fc, fd, _ , ff]
-                 [va, vb, vc, vd, ve, vf] = Comment{..}
+  convertResults [fa, fb, fc, fd, ff]
+                 [va, vb, vc, vd, vf] = Comment{..}
     where !commentId        = convert fa va
           !commentFor       = convert fb vb
           !commentWho       = convert fc vc
           !commentText      = convert fd vd
-          !commentExtra     = fromMaybe Null . decodeStrict $ fromMaybe "{}" ve
           !commentCreatedAt = convert ff vf
   convertResults fs vs  = convertError fs vs 2
 
@@ -54,8 +52,7 @@ instance ToJSON Comment where
     [ "id"         .= commentId
     , "for"        .= commentFor
     , "who"        .= commentWho
-    , "text"       .= commentText
-    , "extra"      .= commentExtra
+    , "comment"    .= commentText
     , "created_at" .= commentCreatedAt
     ]
 
