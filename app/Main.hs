@@ -99,4 +99,5 @@ application = do
   get    "/api/comments/:for/" getListHandler
   delete "/api/comments/:for/" removeListHandler
   delete "/api/comment/:id/"   removeHandler
+  get    "/api/comment/:id/"   getHandler
   post   "/api/comments/:for/" createHandler

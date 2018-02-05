@@ -6,6 +6,7 @@ module Comment.Handler
   , removeListHandler
   , removeHandler
   , getListHandler
+  , getHandler
   ) where
 
 import           Control.Monad           (void)
@@ -49,6 +50,11 @@ removeHandler = do
   cid <- param "id"
   void . lift $ API.remove cid
   resultOK
+
+getHandler :: HasMySQL u => ActionH u ()
+getHandler = do
+  cid <- param "id"
+  json =<< lift (API.get cid)
 
 removeListHandler :: HasMySQL u => ActionH u ()
 removeListHandler = do
