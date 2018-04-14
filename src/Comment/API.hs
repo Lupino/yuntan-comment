@@ -10,7 +10,6 @@ module Comment.API
   , mergeData
   ) where
 
-import           Data.Aeson              (Value)
 import           Data.Int                (Int64)
 import           Haxl.Core               (GenHaxl, dataFetch, uncachedRequest)
 

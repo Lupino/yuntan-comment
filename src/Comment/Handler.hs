@@ -10,28 +10,17 @@ module Comment.Handler
   ) where
 
 import           Control.Monad           (void)
-import           Control.Monad.IO.Class  (liftIO)
 import           Control.Monad.Reader    (lift)
-import           Data.ByteString         (ByteString)
-import qualified Data.ByteString.Lazy    as LB (ByteString, empty)
-import           Data.GraphQL            (graphql)
-import           Network.HTTP.Types      (status204)
-import           Web.Scotty.Trans        (body, json, param, raw, rescue,
-                                          status)
+import           Web.Scotty.Trans        (json, param, rescue)
 
 import qualified Comment.API             as API
 import           Comment.Types           (ListQuery (..))
-import           Data.Maybe              (fromMaybe)
-import           Data.UnixTime
 
 import           Yuntan.Types.ListResult (From, ListResult (..), Size)
 import           Yuntan.Types.OrderBy    (desc)
 import           Yuntan.Types.Scotty     (ActionH)
-import           Yuntan.Utils.Scotty     (errBadRequest, ok, okListResult)
+import           Yuntan.Utils.Scotty     (ok, okListResult)
 
-import           Data.Int                (Int64)
-import           Data.Text               (Text)
-import           Haxl.Core               (GenHaxl)
 import           Yuntan.Types.HasMySQL   (HasMySQL)
 
 resultOK :: ActionH u ()

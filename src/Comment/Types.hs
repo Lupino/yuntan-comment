@@ -18,11 +18,9 @@ import           Database.MySQL.Simple.QueryResults (QueryResults, convertError,
                                                      convertResults)
 import           Database.MySQL.Simple.Result       (convert)
 
-import           Data.Aeson                         (ToJSON (..), Value (Null),
-                                                     decodeStrict, object, (.=))
+import           Data.Aeson                         (ToJSON (..), object, (.=))
 
 import           Data.Int                           (Int64)
-import           Data.Maybe                         (fromMaybe)
 import           Data.Text                          (Text)
 
 import           Data.Hashable                      (Hashable (..))
