@@ -23,10 +23,10 @@ import           Yuntan.Utils.Scotty     (ok, okListResult)
 
 import           Yuntan.Types.HasMySQL   (HasMySQL)
 
-resultOK :: ActionH u ()
+resultOK :: ActionH u w ()
 resultOK = ok "result" ("OK" :: String)
 
-createHandler :: HasMySQL u => ActionH u ()
+createHandler :: HasMySQL u => ActionH u w ()
 createHandler = do
   for <- param "for"
   who <- param "who"
@@ -34,24 +34,24 @@ createHandler = do
   cid <- lift $ API.create for who comment
   json =<< lift (API.get cid)
 
-removeHandler :: HasMySQL u => ActionH u ()
+removeHandler :: HasMySQL u => ActionH u w ()
 removeHandler = do
   cid <- param "id"
   void . lift $ API.remove cid
   resultOK
 
-getHandler :: HasMySQL u => ActionH u ()
+getHandler :: HasMySQL u => ActionH u w ()
 getHandler = do
   cid <- param "id"
   json =<< lift (API.get cid)
 
-removeListHandler :: HasMySQL u => ActionH u ()
+removeListHandler :: HasMySQL u => ActionH u w ()
 removeListHandler = do
   for <- param "for"
   void . lift $ API.removeList (LQ1 for)
   resultOK
 
-getListHandler :: HasMySQL u => ActionH u ()
+getListHandler :: HasMySQL u => ActionH u w ()
 getListHandler = do
   for <- param "for"
   from <- param "from" `rescue` (\_ -> return (0::From))

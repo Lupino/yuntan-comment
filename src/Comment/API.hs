@@ -20,13 +20,13 @@ import           Yuntan.Types.HasMySQL   (HasMySQL)
 import           Yuntan.Types.ListResult (From, Size)
 import           Yuntan.Types.OrderBy    (OrderBy)
 
-mergeData  :: HasMySQL u => GenHaxl u ()
-create     :: HasMySQL u => Text -> Text -> Text -> GenHaxl u Int64
-get        :: HasMySQL u => Int64 -> GenHaxl u (Maybe Comment)
-getList    :: HasMySQL u => ListQuery -> From -> Size -> OrderBy -> GenHaxl u [Comment]
-count      :: HasMySQL u => ListQuery -> GenHaxl u Int64
-remove     :: HasMySQL u => Int64 -> GenHaxl u ()
-removeList :: HasMySQL u => ListQuery -> GenHaxl u ()
+mergeData  :: HasMySQL u => GenHaxl u w ()
+create     :: HasMySQL u => Text -> Text -> Text -> GenHaxl u w Int64
+get        :: HasMySQL u => Int64 -> GenHaxl u w (Maybe Comment)
+getList    :: HasMySQL u => ListQuery -> From -> Size -> OrderBy -> GenHaxl u w [Comment]
+count      :: HasMySQL u => ListQuery -> GenHaxl u w Int64
+remove     :: HasMySQL u => Int64 -> GenHaxl u w ()
+removeList :: HasMySQL u => ListQuery -> GenHaxl u w ()
 
 mergeData       = uncachedRequest MergeData
 create a b c    = uncachedRequest (Create a b c)
