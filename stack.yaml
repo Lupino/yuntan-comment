@@ -13,13 +13,12 @@ extra-deps:
   subdirs:
   - yuntan-common-scotty
   - yuntan-common-scotty-type
+  - yuntan-common-order
+  - yuntan-common-json
+  - yuntan-common-result
+  - yuntan-common-list-result
   - yuntan-common-graphql
   - yuntan-common-config-mysql
-  - yuntan-common-list-result
-  - yuntan-common-result
-  - yuntan-common-json
-- git: https://github.com/jdnavarro/graphql-haskell.git
-  commit: 40f9024b51900c73bc0f65444c16022bd73820be
 # Packages to be pulled from upstream that are not in the resolver (e.g., acme-missiles-0.3)
 # extra-deps:
 

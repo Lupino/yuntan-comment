@@ -36,13 +36,11 @@ library
 
                      , time
 
-                     , graphql
                      , unordered-containers
                      , yuntan-common-scotty
                      , yuntan-common-scotty-type
                      , yuntan-common-order
                      , yuntan-common-list-result
-                     , yuntan-common-graphql
                      , yuntan-common-config-mysql
                      , http-types
                      , mtl
